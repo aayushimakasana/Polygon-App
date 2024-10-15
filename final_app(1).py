@@ -33,9 +33,14 @@ def calculate_triangle_angle(canvas, result_label):
             angle3 = 180 - (angle1 + angle2)
             result_label.config(text=f"The third angle is {angle3} degrees.")
             #draw_triangle(canvas, [angle1, angle2, angle3])
-            origin = (150, 150)
-            length = 100
-            draw_triangle(canvas, origin, length, angle1, angle2)
+            if angle1==90 or angle2==90 or angle3 ==90 :
+                origin = (150, 150)
+                length = 100
+                draw_triangle(canvas, origin, length, 90, angle2)
+            else:
+                origin = (150, 150)
+                length = 100
+                draw_triangle(canvas, origin, length, angle1, angle2)
     except ValueError:
         messagebox.showerror("Error", "Please enter valid positive integers for angles.")
 
