@@ -3,7 +3,7 @@ from tkinter import simpledialog,messagebox
 import math
 
 
-def draw_triangle(canvas, origin, length, angle1,angle2):
+def draw_triangle(canvas, origin, length, angle1,angle2,angle3):
     # Draw the horizontal line (0 degrees)
     canvas.delete("all")
     canvas.create_line(origin[0], origin[1], origin[0] + length, origin[1], fill="blue")
@@ -17,7 +17,7 @@ def draw_triangle(canvas, origin, length, angle1,angle2):
     hypo1 = math.hypot(length,length)
     canvas.create_line(origin[0] + length, origin[1],x3,y3, fill="blue")
     # Label the angle
-    canvas.create_text(origin[0]+ 15, origin[1] - 10, text=f'{angle1}°', fill='black')
+    canvas.create_text(x3,y3, text=f'{angle3}°', fill='black')
 
 def calculate_triangle_angle(canvas, result_label):
     try:
@@ -36,11 +36,11 @@ def calculate_triangle_angle(canvas, result_label):
             if angle1==90 or angle2==90 or angle3 ==90 :
                 origin = (150, 150)
                 length = 100
-                draw_triangle(canvas, origin, length, 90, angle2)
+                draw_triangle(canvas, origin, length, 90, angle2,90)
             else:
                 origin = (150, 150)
                 length = 100
-                draw_triangle(canvas, origin, length, angle1, angle2)
+                draw_triangle(canvas, origin, length, angle1, angle2,angle3)
     except ValueError:
         messagebox.showerror("Error", "Please enter valid positive integers for angles.")
 
